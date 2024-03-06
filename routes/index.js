@@ -4,13 +4,13 @@ const userRoutes = require('./userRoutes');
 const thoughtRoutes = require('./thoughtRoutes');
 
 
-//Expres Router 
+// Express Router 
 const router = express.Router();
 
 
-// Exported Routes 
+// Routes 
 router.use('/users', userRoutes);
 router.use('/thoughts', thoughtRoutes);
 
-
+// Export routes
 module.exports = router; 
