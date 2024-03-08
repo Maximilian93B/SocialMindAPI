@@ -57,7 +57,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/socialmedia', {
   };
 
   seedDB().then(() =>{
-    console.log('Closing Connection');
-    console.log('Please restart the sever');
-    mongoose.connection.close();
+    console.log('DB Connected...');
+    console.log('Server Running');
+    console.log('SocialMindAPI ready to use...');
   });
