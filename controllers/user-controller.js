@@ -16,10 +16,17 @@ const userController = {
   // get single user by id
   async getSingleUser(req, res) {
     try {
-      const dbUserData = await User.findOne({ _id: req.params.userId })
-        .select('-__v')
-        .populate('friends')
-        .populate('thoughts');
+      // Fixed params sto _id: req.params.id
+      const dbUserData = await User.findOne({ _id: req.params.id })
+        .select('-__v',)
+        .populate({
+          path:'friends',
+          select:'username email -_id'
+        })
+        .populate({
+          path: 'thoughts',
+          select: 'thoughtText -_id'
+        });
 
       if (!dbUserData) {
         return res.status(404).json({ message: 'No user with this id!' });

@@ -89,7 +89,7 @@ const thoughtController = {
     }
   },
 
-  // add a reaction to a thought
+  // add a reaction to a thought 
   async addReaction(req, res) {
     try {
       const dbThoughtData = await Thought.findOneAndUpdate(
@@ -108,12 +108,13 @@ const thoughtController = {
       res.status(500).json(err);
     }
   },
-  // remove reaction from a thought
+  // remove reaction from a thought 
   async removeReaction(req, res) {
     try {
       const dbThoughtData = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
-        { $pull: { reactions: { reactionId: req.params.reactionId } } },
+        // Fixed params to .id 
+        { $pull: { reactions: { reactionId: req.params.id } } },
         { runValidators: true, new: true }
       );
 
