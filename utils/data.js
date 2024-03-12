@@ -1,4 +1,5 @@
-// Avengers-themed Seed Data
+// Seed Data --> Banter between avengers 
+
 
 // User Data
 const users = [
@@ -14,7 +15,7 @@ const users = [
     { username: 'CarolDanvers', email: 'captainmarvel@example.com' }
   ];
   
-  // Thoughts (with humorous reactions from other Avengers)
+  // Thoughts 
   const thoughts = [
     {
       thoughtText: "Just because something works, doesn't mean it can't be improved. #ShuriWisdom",

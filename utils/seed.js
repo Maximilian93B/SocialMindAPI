@@ -28,7 +28,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/socialmedia', {
   // Insert the seed thoughts 
   for (const thought of thoughts) {
     const createdThought = await Thought.create({ ...thought });
-    // Assuming `thought.username` matches a User's username
+    // `thought.username` matches a User's username
     await User.findOneAndUpdate(
       { username: thought.username }, 
       { $push: { thoughts: createdThought._id } }
@@ -36,8 +36,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/socialmedia', {
   }
 
   // Loop that established friendships amoung users 
-  // Example: Establishing friendships (simplified)
-  // Assuming you want to make each user friends with every other user
+  // We want to make  each user friends with every other user
   const userIds = createdUsers.map(user => user._id);
   for (const userId of userIds) {
     await User.findByIdAndUpdate(userId, {
