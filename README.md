@@ -1,7 +1,7 @@
 # SocialMindAPI 
 
 ## Live Demo
-[Live Demo Link]()
+[Live Demo Link](./assets//SocailMindApi_demo.webm)
 
 ## Table of Contents
 - [Live Demo](#live-demo)
@@ -15,7 +15,7 @@
 
 
 ## Description
-SocialMindAPI is a back-end platform designed to power social networking features with ease and efficiency. Built using Node.js, Express, MongoDB, and Mongoose, it offers a robust foundation for managing users and their interactions within the API. This API follows the standard Social Media requsts. 
+SocialMindAPI is a back-end platform designed to power social networking features with ease and efficiency. Built using Node.js, Express, MongoDB, and Mongoose, it offers a robust foundation for managing users and their interactions within the API. This API supports the standard Social Media requests. 
 
 ## Built With
 **Node.JS | Express | MongoDB |   Mongoose**
