@@ -1,5 +1,6 @@
 const { Thought, User } = require('../models');
 
+
 const thoughtController = {
   // get all thoughts
   async getThoughts(req, res) {
@@ -13,6 +14,8 @@ const thoughtController = {
       res.status(500).json(err);
     }
   },
+
+
   // get single thought by id
   async getSingleThought(req, res) {
     try {
@@ -28,6 +31,8 @@ const thoughtController = {
       res.status(500).json(err);
     }
   },
+
+
   // create a thought
   async createThought(req, res) {
     try {
@@ -49,6 +54,8 @@ const thoughtController = {
       res.status(500).json(err);
     }
   },
+
+
   // update thought
   async updateThought(req, res) {
     const dbThoughtData = await Thought.findOneAndUpdate({ _id: req.params.thoughtId }, { $set: req.body }, { runValidators: true, new: true });
@@ -62,6 +69,8 @@ const thoughtController = {
     console.log(err);
     res.status(500).json(err);
   },
+
+
   // delete thought
   async deleteThought(req, res) {
     try {
@@ -108,6 +117,8 @@ const thoughtController = {
       res.status(500).json(err);
     }
   },
+
+
   // remove reaction from a thought 
   async removeReaction(req, res) {
     try {

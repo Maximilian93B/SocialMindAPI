@@ -13,11 +13,12 @@ const userController = {
       res.status(500).json(err);
     }
   },
+  
   // get single user by id
   async getSingleUser(req, res) {
     try {
-      // Fixed params sto _id: req.params.id
-      const dbUserData = await User.findOne({ _id: req.params.id })
+      
+      const dbUserData = await User.findOne({_id: req.params.id })
         .select('-__v',)
         .populate({
           path:'friends',
@@ -38,6 +39,8 @@ const userController = {
       res.status(500).json(err);
     }
   },
+
+  
   // create a new user
   async createUser(req, res) {
     try {
@@ -52,7 +55,7 @@ const userController = {
   async updateUser(req, res) {
     try {
       const dbUserData = await User.findOneAndUpdate(
-        { _id: req.params.userId },
+        { _id: req.params.id },
         {
           $set: req.body,
         },
@@ -72,15 +75,17 @@ const userController = {
       res.status(500).json(err);
     }
   },
+ 
   // delete user (BONUS: and delete associated thoughts)
   async deleteUser(req, res) {
     try {
-      const dbUserData = await User.findOneAndDelete({ _id: req.params.userId })
+      const dbUserData = await User.findOneAndDelete({ _id: req.params.id })
 
       if (!dbUserData) {
         return res.status(404).json({ message: 'No user with this id!' });
       }
 
+ 
       // BONUS: get ids of user's `thoughts` and delete them all
       await Thought.deleteMany({ _id: { $in: dbUserData.thoughts } });
       res.json({ message: 'User and associated thoughts deleted!' });
