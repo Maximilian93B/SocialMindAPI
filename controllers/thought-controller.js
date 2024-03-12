@@ -55,9 +55,10 @@ const thoughtController = {
     }
   },
 
-
+  // Needs to be try/catch as this is causing the serve to crash
   // update thought
   async updateThought(req, res) {
+    try{
     const dbThoughtData = await Thought.findOneAndUpdate({ _id: req.params.thoughtId }, { $set: req.body }, { runValidators: true, new: true });
 
     if (!dbThoughtData) {
@@ -66,8 +67,10 @@ const thoughtController = {
 
     res.json(dbThoughtData);
 
+  }catch(error) {
     console.log(err);
     res.status(500).json(err);
+    }
   },
 
 
@@ -124,14 +127,16 @@ const thoughtController = {
     try {
       const dbThoughtData = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
-        // Fixed params to .id 
-        { $pull: { reactions: { reactionId: req.params.id } } },
+        // Fixed params reactionId
+        { $pull: { reactions: { reactionId: req.params.reactionId } } },
         { runValidators: true, new: true }
       );
 
       if (!dbThoughtData) {
         return res.status(404).json({ message: 'No thought with this id!' });
       }
+
+      //
 
       res.json(dbThoughtData);
     } catch (err) {
